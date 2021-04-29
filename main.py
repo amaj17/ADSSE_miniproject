@@ -1,6 +1,8 @@
 import numpy as np
 import math
 
+'''For the explanation of the code, look at the pseudocode in the report'''
+
 def brute_force(a, n):
     maximum = -math.inf
     k = 0
