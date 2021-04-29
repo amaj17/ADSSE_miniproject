@@ -26,18 +26,24 @@ def kadane_algorithm(a, n):
 
     return M, x1, x2
 
+#Generate an array (here size of 50000)
 a = np.random.randint(-10, 10, 50000)
 a = np.array(a)
+#Sart tracking memory
 tracemalloc.start()
+#Start tracking time
 begin = time.time()
 max_sum_subarray_kadane = kadane_algorithm(a, len(a))
-snapshot= tracemalloc.take_snapshot()
+#Stop tracking time
 end = time.time()
+#Stopo tracking memory
+snapshot= tracemalloc.take_snapshot()
 for stat in snapshot.statistics("lineno"):
     print("stat kadane")
     print(stat)
     print(stat.traceback.format())
+#Print peak memory
 print("\nTraced Memory (Current, Peak): ", tracemalloc.get_traced_memory())
-
+#Print time spent
 print("Time:")
 print(end-begin)
