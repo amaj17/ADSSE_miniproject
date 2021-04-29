@@ -41,20 +41,25 @@ def find_maximum_subarray(a, low, high):
         else:
             return cross_low, cross_high, cross_sum
 
-
+#Generate an array (here size of 50000)
 a = np.random.randint(-10, 10, 50000)
 a = np.array(a)
+#Start tracking memory
 tracemalloc.start()
+#Start tracking time
 begin = time.time()
 
 max_sum_subarray_dac = find_maximum_subarray(a, 0, len(a)-1)
+#End tracking time
 end = time.time()
-
+#End tracking memory
 snapshot= tracemalloc.take_snapshot()
 for stat in snapshot.statistics("lineno"):
     print("stat dac")
     print(stat)
     print(stat.traceback.format())
+#Print memory peak
 print("\nTraced Memory (Current, Peak): ", tracemalloc.get_traced_memory())
+#Print time spent
 print("Time:")
 print(end-begin)
